@@ -19,6 +19,7 @@ CONFIGURATION=debug
 if [[ "$MODE" == "--release-build" ]]; then
   CONFIGURATION=release
   APP_BUNDLE="$ROOT_DIR/dist/release-build/LabelPrint.app"
+  SOURCE_COMMIT="$(git rev-parse --verify HEAD)"
 fi
 swift build --disable-sandbox -c "$CONFIGURATION" --arch arm64 --product "$APP_NAME"
 BUILD_DIR="$(swift build --disable-sandbox -c "$CONFIGURATION" --arch arm64 --show-bin-path)"
@@ -51,7 +52,7 @@ PLIST
 mkdir -p "$APP_BUNDLE/Contents/Resources"
 cp "$ROOT_DIR/LICENSE" "$APP_BUNDLE/Contents/Resources/LICENSE"
 if [[ "$MODE" == "--release-build" ]]; then
-  printf 'Version: %s\nSource: https://github.com/%s/tree/%s\nSPDX-License-Identifier: GPL-3.0-only\n' "$VERSION" "$REPOSITORY" "$(git rev-parse HEAD)" > "$APP_BUNDLE/Contents/Resources/BuildInfo.txt"
+  printf 'Version: %s\nSource: https://github.com/%s/tree/%s\nSPDX-License-Identifier: GPL-3.0-only\n' "$VERSION" "$REPOSITORY" "$SOURCE_COMMIT" > "$APP_BUNDLE/Contents/Resources/BuildInfo.txt"
 else
   /usr/bin/codesign --force --sign - --identifier "$BUNDLE_ID" "$APP_BUNDLE"
 fi
