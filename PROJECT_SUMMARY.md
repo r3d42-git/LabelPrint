@@ -104,5 +104,32 @@ and strict ad-hoc signature validation passed. Icon conversion needed a permitte
 context after sandbox-only iconutil Invalid Iconset; the same script then succeeded.
 The native UI inspection bridge remained unavailable, so no Dock/Finder screenshot was
 claimed. The user approved the icon and requested its integration into GitHub Pages
-and publication as a new signed/notarized release. Version 0.2.1 (build 4) is prepared;
+and publication as a new signed/notarized release. Version 0.2.1 (build 4) is published;
 the published 0.2.0 tag and ZIP remain unchanged.
+
+
+## Published release 0.2.1 — 2026-10-10
+
+- Tag `v0.2.1`, source/release commit `169bc40315530980c68a13e2c761106da77fdacf`.
+- [Release](https://github.com/r3d42-git/LabelPrint/releases/tag/v0.2.1).
+- Asset: [LabelPrint-0.2.1-macOS-arm64.zip](https://github.com/r3d42-git/LabelPrint/releases/download/v0.2.1/LabelPrint-0.2.1-macOS-arm64.zip).
+- SHA-256: `cbb0c2894630de7609a48688c73b297efb098ceb45cf269f33da89f4f7a9a575`.
+- Bundle `de.r3d.labelprint.test`, version 0.2.1/build 4, arm64, macOS 14+.
+- Developer ID Application: Philipp John Hild (`G6JH37W285`), Hardened Runtime and timestamp.
+- Apple submission `4a72bc59-9ce7-4575-aa38-b993dda5219c`: Accepted; app stapled before ZIP.
+- Local and fresh public ZIP both passed strict signature, stapler, Gatekeeper and
+  `syspolicy_check distribution`; downloaded bytes and GitHub asset digest equal the local
+  SHA-256. The verifier also confirmed CFBundleIconFile and exact embedded ICNS bytes.
+- Icon SHA-256: `80867478f8e39dfb02e8f27a349171eab9391f28a25f8ce894bd0906cff65aec`.
+- [Release CI](https://github.com/r3d42-git/LabelPrint/actions/runs/38070695209) passed:
+  15 tests, app build, offline QR/Code128 check and shell syntax.
+- [Pages deployment](https://github.com/r3d42-git/LabelPrint/actions/runs/38070694241) passed.
+- Website header now uses the approved icon, with 32px favicon and 180px Apple touch icon.
+  Local browser checks covered 1440/390px, DE/EN, light/dark; no horizontal overflow or
+  JavaScript errors. Desktop/mobile visual review passed. Existing Archify content is unchanged.
+- Public HTTPS page and all three icon files matched local bytes exactly. Landing-page
+  SHA-256: `0fceccba469fe0f751b16a2ee3a6b5d0b8ad3792b8fae0f3bcbb7ca259e099d3`.
+- No print-engine changes or new physical-printer acceptance test; previously confirmed
+  PDF/BLE behavior is retained. No separate clean-machine launch test or Intel artifact.
+
+This evidence is added in a documentation-only commit; both published release tags remain fixed.
