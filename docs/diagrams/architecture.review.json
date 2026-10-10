@@ -1,0 +1,14 @@
+{
+  "diagram_type": "architecture",
+  "artifact_sha256": "d6028b115e7deeaa20adba4d9bfb0a4d676d44267f895171c4f0447933c55638",
+  "specification_sha256": "ae2674b5e86498c9cf91cbf5508e418d4a165f409b63fb21e6fa4bf6d92776d7",
+  "validation": "9/9 showcase, 0 errors, 0 warnings",
+  "browser_evidence": "passed",
+  "visual_review": "passed",
+  "review_scope": [
+    "1440x900 light screenshot",
+    "2048x1320 dark screenshot"
+  ],
+  "observations": "Clear reading path, readable labels, no visible collisions; balanced large desktop composition. Fixed viewer controls are English; authored labels are German.",
+  "correction_rounds": 1
+}

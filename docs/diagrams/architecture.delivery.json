@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "deliver",
+  "type": "architecture",
+  "input": "architecture.json",
+  "output": "architecture.html",
+  "specification": {
+    "sha256": "ae2674b5e86498c9cf91cbf5508e418d4a165f409b63fb21e6fa4bf6d92776d7",
+    "bytes": 3392
+  },
+  "artifact": {
+    "sha256": "d6028b115e7deeaa20adba4d9bfb0a4d676d44267f895171c4f0447933c55638",
+    "bytes": 804581
+  },
+  "validation": {
+    "checksPassed": 9,
+    "checkCount": 9,
+    "compositionProfile": "showcase",
+    "compositionStatus": "pass",
+    "errors": 0,
+    "warnings": 0
+  },
+  "evidence": {
+    "verified": true,
+    "repository": "https://github.com/r3d42-git/LabelPrint",
+    "revision": "7b86a658a905e0960443e04ba84efe6107dd1e21",
+    "references": 5
+  }
+}

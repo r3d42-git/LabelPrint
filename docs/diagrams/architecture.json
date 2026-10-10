@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "LabelPrint · vom PDF zum Etikett",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1150,
+      600
+    ],
+    "repository": {
+      "url": "https://github.com/r3d42-git/LabelPrint",
+      "revision": "7b86a658a905e0960443e04ba84efe6107dd1e21"
+    }
+  },
+  "components": [
+    {
+      "id": "pdf-source",
+      "type": "external",
+      "label": "PDF-Datei",
+      "sublabel": "Original bleibt unverändert",
+      "pos": [
+        50,
+        90
+      ],
+      "size": [
+        225,
+        90
+      ],
+      "sources": [
+        {
+          "path": "Sources/LabelTestCore/PDFLabelDocument.swift",
+          "line": 6,
+          "label": "PDF-Snapshot"
+        }
+      ]
+    },
+    {
+      "id": "pdf-selection",
+      "type": "frontend",
+      "label": "Seite & Ausschnitt",
+      "sublabel": "SwiftUI + AppKit",
+      "pos": [
+        460,
+        90
+      ],
+      "size": [
+        225,
+        90
+      ],
+      "sources": [
+        {
+          "path": "Sources/LabelPrintTest/PDFCropCanvas.swift",
+          "line": 64,
+          "label": "Mausauswahl"
+        }
+      ]
+    },
+    {
+      "id": "label-renderer",
+      "type": "backend",
+      "label": "Finales Druckraster",
+      "sublabel": "Core Graphics · 824 × 1592",
+      "pos": [
+        870,
+        90
+      ],
+      "size": [
+        225,
+        90
+      ],
+      "sources": [
+        {
+          "path": "Sources/LabelTestCore/PDFLabelDocument.swift",
+          "line": 66,
+          "label": "Finales Raster"
+        }
+      ]
+    },
+    {
+      "id": "tspl-job",
+      "type": "backend",
+      "label": "TSPL-Druckauftrag",
+      "sublabel": "Verlustfreie 1-Bit-Blöcke",
+      "pos": [
+        870,
+        370
+      ],
+      "size": [
+        225,
+        90
+      ],
+      "sources": [
+        {
+          "path": "Sources/LabelTestCore/TestLabel.swift",
+          "line": 208,
+          "label": "TSPL-Auftrag"
+        }
+      ]
+    },
+    {
+      "id": "ble-transport",
+      "type": "messagebus",
+      "label": "Bluetooth LE",
+      "sublabel": "CoreBluetooth · FF00 / FF02",
+      "pos": [
+        460,
+        370
+      ],
+      "size": [
+        225,
+        90
+      ],
+      "sources": [
+        {
+          "path": "Sources/LabelPrintTest/BluetoothPrinter.swift",
+          "line": 352,
+          "label": "BLE-Transport"
+        }
+      ]
+    },
+    {
+      "id": "label-printer",
+      "type": "external",
+      "label": "D520BT",
+      "sublabel": "103 × 199 mm auf Papier",
+      "pos": [
+        50,
+        370
+      ],
+      "size": [
+        225,
+        90
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "open-pdf",
+      "from": "pdf-source",
+      "to": "pdf-selection",
+      "label": "Lokaler Snapshot"
+    },
+    {
+      "id": "render-crop",
+      "from": "pdf-selection",
+      "to": "label-renderer",
+      "label": "Ausschnitt + 90°"
+    },
+    {
+      "id": "encode-raster",
+      "from": "label-renderer",
+      "to": "tspl-job",
+      "label": "Proportional · ≥ 3 mm Rand",
+      "labelDy": 24
+    },
+    {
+      "id": "send-job",
+      "from": "tspl-job",
+      "to": "ble-transport",
+      "label": "Ein Auftrag pro Klick"
+    },
+    {
+      "id": "write-ble",
+      "from": "ble-transport",
+      "to": "label-printer",
+      "label": "Write with response"
+    }
+  ]
+}
