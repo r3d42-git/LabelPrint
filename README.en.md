@@ -10,7 +10,7 @@ No manufacturer driver, account, cloud service or external runtime libraries. PD
 
 - **macOS 14 or later**, Apple Silicon (arm64).
 - A D520BT with Bluetooth LE and matching 103 × 199 mm labels.
-- [Download LabelPrint 0.2.0](https://github.com/r3d42-git/LabelPrint/releases/download/v0.2.0/LabelPrint-0.2.0-macOS-arm64.zip), extract the ZIP and move `LabelPrint.app` into Applications.
+- [Download LabelPrint 0.2.1](https://github.com/r3d42-git/LabelPrint/releases/download/v0.2.1/LabelPrint-0.2.1-macOS-arm64.zip), extract the ZIP and move `LabelPrint.app` into Applications.
 - Developer ID signed and Apple notarized, with a stapled ticket. A fresh GitHub download passed checksum, signature and Gatekeeper verification. An Intel build is currently not available.
 
 ## Print a label

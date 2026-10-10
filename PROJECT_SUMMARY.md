@@ -34,14 +34,14 @@ mode. Observed printer replies: SSSGETPRINTING:DOING and SSSGETPRINTING:DONE.
 
 ## Release contract
 
-`script/project.env` is the release metadata source. Version 0.2.0, build 3,
+`script/project.env` is the release metadata source. Version 0.2.1, build 4,
 Apple Silicon arm64, macOS 14+. Product bundle LabelPrint.app; legacy internal executable
 LabelPrintTest and bundle ID de.r3d.labelprint.test are retained for continuity.
 
-`script/release.sh 0.2.0`: clean-source tests, optimized build, Developer ID + Hardened
+`script/release.sh 0.2.1`: clean-source tests, optimized build, Developer ID + Hardened
 Runtime + timestamp, Apple submission, Accepted gate, app staple, ZIP/checksum and
 fresh extraction verification. Existing local Keychain profile: LabelPrint. Credentials
-never enter source control. `script/publish_release.sh --dry-run 0.2.0` checks the
+never enter source control. `script/publish_release.sh --dry-run 0.2.1` checks the
 exact source commit and local artifact. Publication separately pushes main/tag, creates
 the GitHub release and independently downloads/verifies exact public bytes.
 
@@ -88,3 +88,21 @@ Final release evidence is recorded below; the published tag remains unchanged.
 The public repository was created empty, then only reviewed, explicitly staged files were
 pushed. Vendor packages/manuals, private PDFs, local settings and build outputs remain
 excluded. No credentials, Keychain configuration or global tooling were changed.
+
+## Icon integration for 0.2.1 — 2026-10-10
+
+A new LabelPrint icon has been created with the built-in image-generation tool:
+forest-green macOS tile, white adhesive label and dark barcode, matching the website palette.
+`Resources/AppIcon-source.png` is the 1024×1024 transparent source; `Resources/ICON_PROMPT.md`
+records the generation and cleanup prompts. `script/build_icon.sh` creates the standard
+1×/2× macOS sizes and `Resources/AppIcon.icns` with sips/iconutil.
+
+Development and future release builds now embed and reference AppIcon.icns. Release
+verification requires the icon and compares its exact bytes against the source asset.
+The local app rebuilt and launched successfully; Info.plist, embedded ICNS byte identity
+and strict ad-hoc signature validation passed. Icon conversion needed a permitted local
+context after sandbox-only iconutil Invalid Iconset; the same script then succeeded.
+The native UI inspection bridge remained unavailable, so no Dock/Finder screenshot was
+claimed. The user approved the icon and requested its integration into GitHub Pages
+and publication as a new signed/notarized release. Version 0.2.1 (build 4) is prepared;
+the published 0.2.0 tag and ZIP remain unchanged.

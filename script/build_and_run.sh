@@ -10,6 +10,8 @@ case "$MODE" in
   run|--verify|--debug|--logs|--telemetry|--build-only|--release-build) ;;
   *) echo "usage: $0 [--build-only|--release-build|--verify|--debug|--logs|--telemetry]" >&2; exit 2 ;;
 esac
+ICON_SOURCE="$ROOT_DIR/Resources/AppIcon.icns"
+[[ -f "$ICON_SOURCE" ]] || { echo "App icon is missing: $ICON_SOURCE. Run script/build_icon.sh first." >&2; exit 1; }
 if [[ "$MODE" != "--build-only" && "$MODE" != "--release-build" ]]; then
   pkill -x "$APP_NAME" >/dev/null 2>&1 || true
 fi
@@ -34,6 +36,7 @@ cat > "$APP_BUNDLE/Contents/Info.plist" <<PLIST
 <key>CFBundleName</key><string>LabelPrint</string>
 <key>CFBundleDisplayName</key><string>LabelPrint</string>
 <key>CFBundlePackageType</key><string>APPL</string>
+<key>CFBundleIconFile</key><string>AppIcon.icns</string>
 <key>CFBundleShortVersionString</key><string>$VERSION</string>
 <key>CFBundleVersion</key><string>$BUILD_NUMBER</string>
 <key>LSMinimumSystemVersion</key><string>14.0</string>
@@ -50,6 +53,7 @@ cat > "$APP_BUNDLE/Contents/Info.plist" <<PLIST
 </dict></plist>
 PLIST
 mkdir -p "$APP_BUNDLE/Contents/Resources"
+cp "$ICON_SOURCE" "$APP_BUNDLE/Contents/Resources/AppIcon.icns"
 cp "$ROOT_DIR/LICENSE" "$APP_BUNDLE/Contents/Resources/LICENSE"
 if [[ "$MODE" == "--release-build" ]]; then
   printf 'Version: %s\nSource: https://github.com/%s/tree/%s\nSPDX-License-Identifier: GPL-3.0-only\n' "$VERSION" "$REPOSITORY" "$SOURCE_COMMIT" > "$APP_BUNDLE/Contents/Resources/BuildInfo.txt"

@@ -17,8 +17,8 @@ The first supported release architecture is arm64; macOS 14 is the deployment ta
 ## Local certification
 
 ```sh
-./script/release.sh 0.2.0
-./script/publish_release.sh --dry-run 0.2.0
+./script/release.sh 0.2.1
+./script/publish_release.sh --dry-run 0.2.1
 ```
 
 The release script requires a clean Git worktree, runs tests and the offline barcode
@@ -46,7 +46,7 @@ The wrapper refuses to overwrite an existing final archive.
 ## Publication and public download
 
 ```sh
-./script/publish_release.sh 0.2.0
+./script/publish_release.sh 0.2.1
 ```
 
 This verifies clean `main`, the intended remote, unused tag and the artifact's source
