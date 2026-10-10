@@ -54,4 +54,37 @@ or change an existing app automatically. Original vendor packages and PDFs stay 
 15 tests passed during implementation. QR and Code128 decode from a cropped synthetic PDF.
 The local 13-page vendor manual was also rendered (first/last page, crop and 90° rotation),
 with visual checks of page orientation and rotated crop. Original files were not changed.
-Final release evidence will be recorded after publication without moving its tag.
+Final release evidence is recorded below; the published tag remains unchanged.
+
+
+## Published release 0.2.0 — 2026-10-10
+
+- Public repository: https://github.com/r3d42-git/LabelPrint
+- Tag: `v0.2.0`, source/release commit: `39baf735a70ce657f3f3628a228d44f359e9e670`.
+- Release: https://github.com/r3d42-git/LabelPrint/releases/tag/v0.2.0
+- Asset: [LabelPrint-0.2.0-macOS-arm64.zip](https://github.com/r3d42-git/LabelPrint/releases/download/v0.2.0/LabelPrint-0.2.0-macOS-arm64.zip).
+- SHA-256: `a93d1784b7e5a19bfa17704182583f6fd6cfbc94225b526a830711b1cef76c87`.
+- Bundle: `de.r3d.labelprint.test`, version 0.2.0/build 3, arm64, macOS 14+.
+- Signing: Developer ID Application: Philipp John Hild (`G6JH37W285`), Hardened Runtime,
+  secure timestamp. No additional entitlements required; no App Sandbox.
+- Apple submission: `066b8dcc-b360-4c86-953f-6b3cd56b2460`, Accepted; app ticket stapled
+  before final ZIP packaging. Strict signature, app staple, Gatekeeper and
+  `syspolicy_check distribution` passed both locally and on a fresh public download.
+- Local ZIP, downloaded ZIP and GitHub's reported SHA-256 digest agree exactly.
+- [Release CI](https://github.com/r3d42-git/LabelPrint/actions/runs/38070104772) passed:
+  15 tests, app build, offline QR/Code128 decode, release-script syntax checks.
+- [Pages deployment](https://github.com/r3d42-git/LabelPrint/actions/runs/38070106531)
+  succeeded; HTTPS enforced at https://r3d42-git.github.io/LabelPrint/.
+- Live landing page SHA-256: `ad8c3f39e3ac33be49efe7e5e6082655cb0154dec0feb17dca8f1fd785c22d3b`.
+- Live architecture SHA-256: `d6028b115e7deeaa20adba4d9bfb0a4d676d44267f895171c4f0447933c55638`.
+  Both public HTTPS responses match the reviewed local files byte for byte.
+- Archify: 9/9 showcase checks, zero errors/warnings; five verified code links pinned to
+  initial source commit `7b86a658a905e0960443e04ba84efe6107dd1e21`. Browser checks at
+  1440×900, 1600×1000, 1920×1080 and 2048×1320 with light/dark; visual review passed.
+  Landing page checked in desktop/mobile, both themes, DE/EN toggle and no JS errors.
+- Remaining boundary: the user tested the functional build on real hardware; the exact
+  packaged release was certified but not launched on a separate clean Mac. No Intel release.
+
+The public repository was created empty, then only reviewed, explicitly staged files were
+pushed. Vendor packages/manuals, private PDFs, local settings and build outputs remain
+excluded. No credentials, Keychain configuration or global tooling were changed.

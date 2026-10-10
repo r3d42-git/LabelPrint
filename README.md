@@ -11,7 +11,7 @@ Kein Herstellertreiber, kein Konto, keine Cloud und keine externen Laufzeitbibli
 - **macOS 14 oder neuer**, Apple Silicon (arm64).
 - D520BT mit Bluetooth LE und passenden 103 × 199 mm Etiketten.
 - [LabelPrint 0.2.0 herunterladen](https://github.com/r3d42-git/LabelPrint/releases/download/v0.2.0/LabelPrint-0.2.0-macOS-arm64.zip), ZIP entpacken und `LabelPrint.app` in den Programme-Ordner ziehen.
-- Die Release-Seite enthält Prüfsummen und Angaben zur Signierung. Eine Intel-Version wird derzeit nicht angeboten.
+- Mit Developer ID signiert und von Apple notarisiert, einschließlich angeheftetem Ticket. Der frische GitHub-Download wurde auf Prüfsumme, Signatur und Gatekeeper-Freigabe geprüft. Eine Intel-Version wird derzeit nicht angeboten.
 
 ## Ein Etikett drucken
 
