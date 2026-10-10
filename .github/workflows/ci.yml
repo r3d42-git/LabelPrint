@@ -1,0 +1,20 @@
+name: Swift checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test PDF, raster and protocol handling
+        run: swift test --disable-sandbox
+      - name: Build application
+        run: ./script/build_and_run.sh --build-only
+      - name: Decode the generated QR and barcode raster
+        run: swift run --disable-sandbox LabelPrintCheck output
+      - name: Check release scripts
+        run: bash -n script/*.sh

@@ -1,0 +1,11 @@
+.DS_Store
+.build/
+dist/
+output/
+Label_Printer_Driver_Mac/
+.swiftpm/
+*.p12
+*.p8
+*.mobileprovision
+.env
+.codex/
